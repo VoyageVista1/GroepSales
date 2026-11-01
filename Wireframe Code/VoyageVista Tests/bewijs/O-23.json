@@ -1,0 +1,87 @@
+{
+  "id": "O-23",
+  "date": "2026-11-01T14:45:29.156Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "App-layoutbron en browsermeldingen",
+  "testdata": "langnl;ongeldig aantal;tekstfout en aria-describedby",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen",
+    "Selecteer klant Zoë van Dijk",
+    "Open details van QA Portugal",
+    "Kies reis en draag over aan Offerte maken"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:45:30.745Z",
+      "message": "Fout gekoppeld aan invoer",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:30.749Z",
+      "message": "Tekstuele fout zichtbaar",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:30.751Z",
+      "message": "Fouttekst",
+      "details": "Vul een geheel aantal reizigers in van 1 tot en met 20."
+    },
+    {
+      "time": "2026-11-01T14:45:30.752Z",
+      "message": "Echte rootlayout heeft Nederlandse fallback",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:30.753Z",
+      "message": "Harnessdocument Nederlands",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:30.753Z",
+      "message": "Geen productie-DOMaudit: taal in echte layoutbron plus geïsoleerde DOM gecontroleerd"
+    }
+  ],
+  "status": "PASS",
+  "evidence": [
+    "O-23.png",
+    "O-23.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nOffertes\nZoek in Voyage Vista\n\nSALES & BOEKINGEN\n\nOffertes\n\nStel reisvoorstellen samen en volg de status.\n\nNieuwe offerte\nConcept\n0\nVerstuurd\n0\nGeaccepteerd\n0\n\nNIEUWE OFFERTE\n\nVoor wie is de reis?\nInvoer nog niet opgeslagen\n1\nKlant\n2\nReis\n3\nControle\nKLANT\nZoë van Dijk\nREIS\nQA Portugal\nREIZIGERS\n0\nBUDGET\n€ 2.000+\nTOTAAL\n€ 0\nNog controleren\nControleer je gegevens\n\nVul een geheel aantal reizigers in van 1 tot en met 20.\n\nAndere reis kiezen\nKlant selecteren\n\nZoek een bestaande klant of voeg een nieuwe klant toe.\n\nNieuwe klant toevoegen\nKlant zoeken\nZv\nZoë van Dijk\nzoe+qa@example.nl · 0612345678\nWijzigen\nBoekingstype\nParticuliere klant\nZakelijke klant\n\nBTW is niet aftrekbaar en is opgenomen in de totale reissom.\n\nGEKOZEN REIS\n\nQA Portugal\n\nPortugal · 1 – 8 juni 2027 · 0 reizigers\n\nOvergenomen\nAantal reizigers\nVul een geheel aantal reizigers in van 1 tot en met 20.\nOvergenomen uit de zoekopdracht\nGewenst budget\nKies een budget\n€ 0 – € 500\n€ 500 – € 1.000\n€ 1.000 – € 1.500\n€ 1.500 – € 2.000\n€ 2.000+\nOvergenomen uit de reiswens\nVolgende stap"
+}

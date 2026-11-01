@@ -1,0 +1,94 @@
+{
+  "id": "O-19",
+  "date": "2026-11-01T14:45:19.294Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Noorwegen2;klantZoë",
+  "testdata": "Review→preview→offertekaart→heropenen",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen",
+    "Selecteer klant Zoë van Dijk",
+    "Open details van QA Noorwegen",
+    "Kies reis en draag over aan Offerte maken",
+    "Ga naar stap 2 Reis",
+    "Controleer actuele geladen reisgegevens",
+    "Ga naar stap 3 Controle",
+    "Genereer concept via expliciete mockactie-adapter"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:45:20.990Z",
+      "message": "Review1993",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:21.225Z",
+      "message": "Preview1993",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:21.231Z",
+      "message": "Klant-e-mail in preview",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:21.271Z",
+      "message": "Offertekaart",
+      "details": "Concept\nNoorwegen\n\nZoë van Dijk · OFF-2026-21197\n\n€ 1.993\nZojuist"
+    },
+    {
+      "time": "2026-11-01T14:45:21.271Z",
+      "message": "Offertekaart consistent",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:21.305Z",
+      "message": "Heropende preview1993",
+      "details": {
+        "ok": true
+      }
+    }
+  ],
+  "status": "PASS",
+  "evidence": [
+    "O-19.png",
+    "O-19.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nOffertes\nZoek in Voyage Vista\n\nSALES & BOEKINGEN\n\nOffertes\n\nStel reisvoorstellen samen en volg de status.\n\nNieuwe offerte\nConcept\n1\nConcept\nNoorwegen\n\nZoë van Dijk · OFF-2026-21197\n\n€ 1.993\nZojuist\nVerstuurd\n0\nGeaccepteerd\n0\n\nOFF-2026-21197\n\nOffertevoorbeeld\nOfferte opgeslagen\nKLANT\nZoë van Dijk\nREIS\nQA Noorwegen\nREIZIGERS\n2\nBUDGET\n€ 2.000+\nTOTAAL\n€ 1.993\nGecontroleerd\nConcept\nOFF-2026-21197\nVOYAGE\nVISTA\nJouw reisvoorstel\n\nVoor Zoë van Dijk · 1 – 8 juni 2027\n\nHoi Zoë, hierbij vind je ons voorstel voor QA Noorwegen. Laat gerust weten als je iets wilt aanpassen!\n\nNoorwegen€ 1.993voor 2 reizigers\nReis\nQA Noorwegen\nInbegrepen\n2 onderdelen\nContact\nzoe+qa@example.nl\nVlucht en verblijf\nVaste kosten\nVlucht en verblijf\n€ 1.780\nVaste kosten\n€ 135\nServicekosten\n€ 78\nBTW inbegrepen\n€ 346\nTotale reissom\n€ 1.993\nConcept aanpassen\nDownloaden\nSluiten\nDelen met klant"
+}

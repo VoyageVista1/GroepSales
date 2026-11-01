@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-01T14:45:17.510Z",
+  "commands": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --pretty false --incremental false",
+      "exitCode": 0,
+      "evidence": "typecheck.log"
+    },
+    {
+      "command": "node --test tests/auth-render.test.mjs tests/customer-self-service.test.mjs",
+      "exitCode": 0,
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "evidence": "regressie-bestaand.log"
+    },
+    {
+      "command": "node node_modules/payload/bin.js build",
+      "exitCode": 1,
+      "reason": "Environment ID could not be resolved",
+      "evidence": "build.log"
+    },
+    {
+      "command": "figma make verify-deploy",
+      "available": false,
+      "reason": "CommandNotFoundException",
+      "evidence": "verify-deploy.log"
+    }
+  ]
+}

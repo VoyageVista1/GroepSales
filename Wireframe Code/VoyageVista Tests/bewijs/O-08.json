@@ -1,0 +1,122 @@
+{
+  "id": "O-08",
+  "date": "2026-11-01T14:44:53.880Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Zakelijke offerte; stap2",
+  "testdata": "BTW30.1;heffing-0.1;herstel21/leeg",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen",
+    "Selecteer klant Zoë van Dijk",
+    "Open details van QA Portugal",
+    "Kies reis en draag over aan Offerte maken",
+    "Ga naar stap 2 Reis",
+    "Controleer actuele geladen reisgegevens",
+    "Ga naar stap 3 Controle"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:44:55.542Z",
+      "message": "Ongeldige belasting blokkeert doorgaan",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.545Z",
+      "message": "Ongeldige belasting blokkeert controleren",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.549Z",
+      "message": "Genereren onbereikbaar bij ongeldige belasting",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.551Z",
+      "message": "Begrijpelijke belastingmelding",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.580Z",
+      "message": "Ongeldige belasting blokkeert doorgaan",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.582Z",
+      "message": "Ongeldige belasting blokkeert controleren",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.586Z",
+      "message": "Genereren onbereikbaar bij ongeldige belasting",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.589Z",
+      "message": "Begrijpelijke belastingmelding",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.681Z",
+      "message": "Herstel geeft toegang tot genereren",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:55.681Z",
+      "message": "Prijs bevestigen ontbreekt: huidige app biedt geen prijswijzigingstoestand"
+    }
+  ],
+  "status": "BLOCKED",
+  "evidence": [
+    "O-08.png",
+    "O-08.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "reason": "Blokkade van doorgaan, controleren en bereiken van genereren plus herstel bewezen. Belastingvalidatie bij Prijs bevestigen niet uitvoerbaar: de huidige app biedt deze toestand niet aan.",
+  "stack": "Error: Blokkade van doorgaan, controleren en bereiken van genereren plus herstel bewezen. Belastingvalidatie bij Prijs bevestigen niet uitvoerbaar: de huidige app biedt deze toestand niet aan.\n    at file:///C:/Users/xudes/Downloads/Voyage%20Vista%20Sales%20&%20IT%20wireframes/Inlog/VoyageVista%20Tests/harness/run.mjs:144:865\n    at async run (file:///C:/Users/xudes/Downloads/Voyage%20Vista%20Sales%20&%20IT%20wireframes/Inlog/VoyageVista%20Tests/harness/run.mjs:67:6)\n    at async file:///C:/Users/xudes/Downloads/Voyage%20Vista%20Sales%20&%20IT%20wireframes/Inlog/VoyageVista%20Tests/harness/run.mjs:143:2",
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nOffertes\nZoek in Voyage Vista\n\nSALES & BOEKINGEN\n\nOffertes\n\nStel reisvoorstellen samen en volg de status.\n\nNieuwe offerte\nConcept\n0\nVerstuurd\n0\nGeaccepteerd\n0\n\nNIEUWE OFFERTE\n\nControleer de offerte\nInvoer nog niet opgeslagen\nKlant\nReis\n3\nControle\nKLANT\nZoë van Dijk\nREIS\nQA Portugal\nREIZIGERS\n2\nBUDGET\n€ 2.000+\nTOTAAL\n€ 890\nGecontroleerd\n\nKLANT\n\nZoë van Dijk\nAanpassen\n\nzoe+qa@example.nl · 0612345678\n\n2 reizigers · Budget € 2.000+\n\nREIS\n\nQA Portugal\nAanpassen\n\nPortugal · 1 – 8 juni 2027\n\nBasispakket\nPrijsopbouw\nBasispakket (2×)\n€ 812\nServicekosten (2 × € 39)\n€ 78\nSubtotaal excl. BTW\n€ 736\nBTW (21%)\n€ 154\nTotale reissom\n€ 890\n\nAANVULLENDE HEFFINGEN\n\nLokale verplichte heffingen\nTer plaatse\n\nTarief moet bij de lokale leverancier worden bevestigd.\n\nTarief is nog niet bevestigd en niet opgenomen in de totale reissom.\n\nControle vóór genereren\n\nAlle verplichte gegevens moeten gereed zijn.\n\n6/6 gereed\nKlant geselecteerd\nGeldig e-mailadres\nAantal reizigers gecontroleerd\nBTW en lokale heffingen geldig\nReis en verplichte onderdelen beschikbaar\nPrijs en beschikbaarheid bevestigd\nPersoonlijk bericht\nVorige\nOfferte genereren"
+}

@@ -1,0 +1,93 @@
+{
+  "id": "O-20",
+  "date": "2026-11-01T14:45:21.476Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Reizen→offerte;mockactieadapters;geen betaalprovider",
+  "testdata": "Portugal2;concept;download;delen;klantacceptatie;betaling",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen",
+    "Selecteer klant Zoë van Dijk",
+    "Open details van QA Portugal",
+    "Kies reis en draag over aan Offerte maken",
+    "Ga naar stap 2 Reis",
+    "Controleer actuele geladen reisgegevens",
+    "Ga naar stap 3 Controle",
+    "Genereer concept via expliciete mockactie-adapter"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:45:23.925Z",
+      "message": "Mockdeelactie geeft zichtbare status",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:23.929Z",
+      "message": "StatusVerstuurd aangeboden aan adapter",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:24.270Z",
+      "message": "Klantacceptatieactie aangeroepen",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:24.309Z",
+      "message": "Betaalbeperking zichtbaar",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:24.313Z",
+      "message": "Geen voorbeeldbetaling beschikbaar",
+      "details": {
+        "ok": true
+      }
+    }
+  ],
+  "status": "BLOCKED",
+  "evidence": [
+    "O-20-demonstratiedownload.txt",
+    "O-20-gedeeld.png",
+    "O-20.png",
+    "O-20.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "reason": "Gedeeltelijke mockflow bewezen. Klantoverdracht en boeking expliciet ingespeeld, niet door echte backend aangemaakt. Volledige keten en voorbeeldbetaling geblokkeerd: geen Figma/Payload-context en betaalprovider/mockbetaalactie ontbreekt.",
+  "stack": "Error: Gedeeltelijke mockflow bewezen. Klantoverdracht en boeking expliciet ingespeeld, niet door echte backend aangemaakt. Volledige keten en voorbeeldbetaling geblokkeerd: geen Figma/Payload-context en betaalprovider/mockbetaalactie ontbreekt.\n    at file:///C:/Users/xudes/Downloads/Voyage%20Vista%20Sales%20&%20IT%20wireframes/Inlog/VoyageVista%20Tests/harness/run.mjs:180:1748\n    at async run (file:///C:/Users/xudes/Downloads/Voyage%20Vista%20Sales%20&%20IT%20wireframes/Inlog/VoyageVista%20Tests/harness/run.mjs:67:6)\n    at async file:///C:/Users/xudes/Downloads/Voyage%20Vista%20Sales%20&%20IT%20wireframes/Inlog/VoyageVista%20Tests/harness/run.mjs:179:2",
+  "body": "VOYAGE\nVISTA\nOnze reizen\nMijn reis\nFavorieten (0)\nReiswens indienen\nContact\nWelkom, Zoë\nUitloggen\n\nMIJN REIS\n\nQA Portugal\n\n1 – 8 juni 2027 · boeking QA-BOEKING\n\nWacht op betaling\n\nVERTREKDATUM\n\n1\nPortugal\n\nREISSOM\n\n€ 890\nNeem voor de betaalstatus contact op met Voyage Vista.\nBetalingsinformatie\n\nDOCUMENTEN\n\nNog niet beschikbaar\nNeem voor je reisdocumenten contact op met Voyage Vista.\nDocumenten bekijken\nReisplanning\nVertrek\nHeenreis\n\nVlucht volgens reisvoorstel\n\nVerblijf\nQA Portugal\n\n1 – 8 juni 2027\n\nTerugreis\nTerug naar huis\n\nExacte vluchttijden volgen op je tickets\n\nMijn aanvragen\n\nJe reisspecialist behandelt de volgende vragen.\n\nQA aanvraag Noorwegen\nGraag Noorwegen voor vier personen op de exacte testdatums.\nNieuw\nMijn reisvoorstellen\n\nBekijk de voorstellen van je reisspecialist en kies je volgende reis.\n\nPortugal\nOFF-2026-23355 · € 890 · Verstuurd\nVoorstel bekijken\nQA Portugal\nQA-BOEKING · 1 – 8 juni 2027 · € 890\nWacht op betaling\nBekijk boeking\nBetaling afronden\n×\n\nOnline betalen is nog niet beschikbaar. Neem voor de betaling van € 890 voor QA Portugal contact op met Voyage Vista.\n\nAnnuleren\nBetaalprovider nog niet gekoppeld"
+}

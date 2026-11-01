@@ -1,0 +1,432 @@
+{
+  "id": "O-21",
+  "date": "2026-11-01T14:45:24.502Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Toetsenbord en dialoog",
+  "testdata": "Naam/rol;beginfocus;Tab/Shift+Tab;Escape;focusterugkeer",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Offertes"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:45:26.034Z",
+      "message": "Dialog heeft correcte naam/rol",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.039Z",
+      "message": "Modal semantiek",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.059Z",
+      "message": "Beginfocus in dialoog",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.072Z",
+      "message": "Focusval Tab 0",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.079Z",
+      "message": "Focusval Tab 1",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.090Z",
+      "message": "Focusval Tab 2",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.107Z",
+      "message": "Focusval Tab 3",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.115Z",
+      "message": "Focusval Tab 4",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.131Z",
+      "message": "Focusval Tab 5",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.142Z",
+      "message": "Focusval Tab 6",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.151Z",
+      "message": "Focusval Tab 7",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.166Z",
+      "message": "Focusval Tab 8",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.176Z",
+      "message": "Focusval Tab 9",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.184Z",
+      "message": "Focusval Tab 10",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.197Z",
+      "message": "Focusval Tab 11",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.208Z",
+      "message": "Focusval Tab 12",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.217Z",
+      "message": "Focusval Tab 13",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.228Z",
+      "message": "Focusval Tab 14",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.239Z",
+      "message": "Focusval Tab 15",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.247Z",
+      "message": "Focusval Tab 16",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.261Z",
+      "message": "Focusval Tab 17",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.275Z",
+      "message": "Focusval Tab 18",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.282Z",
+      "message": "Focusval Tab 19",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.297Z",
+      "message": "Focusval Tab 20",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.308Z",
+      "message": "Focusval Tab 21",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.321Z",
+      "message": "Focusval Tab 22",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.332Z",
+      "message": "Focusval Tab 23",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.345Z",
+      "message": "Focusval Tab 24",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.355Z",
+      "message": "Focusval Tab 25",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.366Z",
+      "message": "Focusval Tab 26",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.377Z",
+      "message": "Focusval Tab 27",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.391Z",
+      "message": "Focusval Tab 28",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.404Z",
+      "message": "Focusval Tab 29",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.415Z",
+      "message": "Focusval Tab 30",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.426Z",
+      "message": "Focusval Tab 31",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.438Z",
+      "message": "Focusval Tab 32",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.450Z",
+      "message": "Focusval Tab 33",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.463Z",
+      "message": "Focusval Tab 34",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.475Z",
+      "message": "Focusval Shift+Tab 0",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.490Z",
+      "message": "Focusval Shift+Tab 1",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.501Z",
+      "message": "Focusval Shift+Tab 2",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.519Z",
+      "message": "Focusval Shift+Tab 3",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.535Z",
+      "message": "Focusval Shift+Tab 4",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.547Z",
+      "message": "Focusval Shift+Tab 5",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.559Z",
+      "message": "Focusval Shift+Tab 6",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.572Z",
+      "message": "Focusval Shift+Tab 7",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.579Z",
+      "message": "Focusval Shift+Tab 8",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.594Z",
+      "message": "Focusval Shift+Tab 9",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.605Z",
+      "message": "Focusval Shift+Tab 10",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.615Z",
+      "message": "Focusval Shift+Tab 11",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.621Z",
+      "message": "Focusval Shift+Tab 12",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.633Z",
+      "message": "Focusval Shift+Tab 13",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.643Z",
+      "message": "Focusval Shift+Tab 14",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.647Z",
+      "message": "Escape sluit dialoog",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:26.653Z",
+      "message": "Focus terug naar opener",
+      "details": {
+        "ok": true
+      }
+    }
+  ],
+  "status": "PASS",
+  "evidence": [
+    "O-21.png",
+    "O-21.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nOffertes\nZoek in Voyage Vista\n\nSALES & BOEKINGEN\n\nOffertes\n\nStel reisvoorstellen samen en volg de status.\n\nNieuwe offerte\nConcept\n0\nVerstuurd\n0\nGeaccepteerd\n0"
+}

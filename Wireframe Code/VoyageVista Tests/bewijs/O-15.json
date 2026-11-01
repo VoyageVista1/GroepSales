@@ -1,0 +1,76 @@
+{
+  "id": "O-15",
+  "date": "2026-11-01T14:45:07.061Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Beschikbaar reisrecord met onbeschikbaar vereist hotel en alternatief",
+  "testdata": "QA Onderdeelconflict;origineel hotel→vervanging→herstel",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen",
+    "Selecteer klant Zoë van Dijk",
+    "Open details van QA Onderdeelconflict",
+    "Kies reis en draag over aan Offerte maken",
+    "Ga naar stap 2 Reis"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:45:08.731Z",
+      "message": "Onbeschikbaar onderdeel blokkeert voortgang",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:08.734Z",
+      "message": "Fout bij onderdeel",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:08.991Z",
+      "message": "Beschikbaar alternatief herstelt voortgang",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:45:08.991Z",
+      "message": "Hele reis niet beschikbaar afzonderlijk bewezen in R-04"
+    }
+  ],
+  "status": "PASS",
+  "evidence": [
+    "O-15.png",
+    "O-15.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nOffertes\nZoek in Voyage Vista\n\nSALES & BOEKINGEN\n\nOffertes\n\nStel reisvoorstellen samen en volg de status.\n\nNieuwe offerte\nConcept\n0\nVerstuurd\n0\nGeaccepteerd\n0\n\nNIEUWE OFFERTE\n\nControleer de gekozen reis\nInvoer nog niet opgeslagen\nKlant\n2\nReis\n3\nControle\nKLANT\nZoë van Dijk\nREIS\nQA Onderdeelconflict\nREIZIGERS\n2\nBUDGET\n€ 2.000+\nTOTAAL\n€ 920\nGecontroleerd\nBeschikbaar\nQA Onderdeelconflict\n\nFrankrijk · 1 – 8 juni 2027 · 2 reizigers\n\nAndere reis of bestemming kiezen\nReisonderdelen\nBeschikbaar vervangend hotel\nVast onderdeel · € 421 p.p.\n+ € 20 t.o.v. origineel\nWijzigen\nOpties en extra’s\n\nDe totaalprijs wordt direct opnieuw berekend.\n\nTransfer\nVaste prijs\n+ € 54\nVerzekering\nPrijs per reiziger\n+ € 29 p.p.\nGekozen reisonderdelen\n€ 842\nGekozen extra’s\n€ 0\nServicekosten (2 × € 39)\n€ 78\nTotale reissom\n€ 920\nBTW, belastingen en verplichte kosten\n\nTarieven zonder bevestigd bedrag blijven configureerbaar.\n\nParticulier\nWaarvan BTW (21%) · inbegrepen\n€ 160\nLuchthaven- en vertrekbelastingen\nVerwerkt in de getoonde vlucht- en reissom.\nInbegrepen in reissom\nLokale verplichte heffingen\nTarief moet bij de lokale leverancier worden bevestigd.\nConfigureerbaar tarief (p.p.)\nIndicatie ter plaatse te betalen\nTarief nog te bevestigen\nTotale reissom aan Voyage Vista\n€ 920\nGeladen reisgegevens gecontroleerd\nDe prijzen zijn actueel en alle onderdelen zijn beschikbaar.\nNu controleren\nVorige\nVolgende stap"
+}

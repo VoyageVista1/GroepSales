@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-01T14:47:01.675Z",
+  "cases": 41,
+  "allEvidenceExists": true,
+  "allReportLinksExist": true,
+  "sourceHashesUnchanged": true,
+  "statusMatchesDefinitiveLog": true,
+  "summary": {
+    "planned": 41,
+    "executed": 34,
+    "attempted": 41,
+    "PASS": 34,
+    "FAIL": 0,
+    "BLOCKED": 7,
+    "NOT RUN": 0
+  }
+}

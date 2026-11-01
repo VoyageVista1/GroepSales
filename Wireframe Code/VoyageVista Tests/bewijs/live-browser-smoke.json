@@ -1,0 +1,34 @@
+[
+  {
+    "route": "/",
+    "date": "2026-11-01T14:38:08.484Z",
+    "status": 500,
+    "finalURL": "http://127.0.0.1:3000/",
+    "lang": null,
+    "visibleText": "This page couldn’t load\n\nA server error occurred. Reload to try again.\n\nReload\n\nERROR 341752506",
+    "screenshot": "live-home.png",
+    "pageErrors": [
+      "Environment ID could not be resolved. Set FIGMA_EID or initialize the project."
+    ]
+  },
+  {
+    "route": "/inloggen",
+    "date": "2026-11-01T14:38:10.349Z",
+    "status": 200,
+    "finalURL": "http://127.0.0.1:3000/inloggen",
+    "lang": "nl",
+    "visibleText": "VOYAGE\nVISTA\n\nPERSOONLIJK. VERTROUWD. VERBONDEN.\n\nElke mooie reis\nbegint met contact.\n\nJe reizen, voorstellen en contact met Voyage Vista. Alles bij elkaar, in je eigen omgeving.\n\n✦\n\nVan het eerste reisidee tot het moment van vertrek.\n\nVOYAGE VISTA · JOUW REIS, ONZE AANDACHT\n\n← Reizen bekijken zonder account\n\nMIJN VOYAGE VISTA\n\nWelkom terug\n\nLog in met je app-account om verder te gaan.\n\nAlle velden zijn verplicht.\n\nE-mailadres\nWachtwoord\nToon\nInloggen\n→\nHulp bij inloggen\n\nNog geen klantaccount?\n\nKlantaccount aanmaken\n\nVoor klanten en medewerkers. Medewerkersaccounts worden door de beheerder aangemaakt.",
+    "screenshot": "live-inloggen.png",
+    "pageErrors": []
+  },
+  {
+    "route": "/mijn-account",
+    "date": "2026-11-01T14:38:11.483Z",
+    "status": 200,
+    "finalURL": "http://127.0.0.1:3000/inloggen",
+    "lang": "nl",
+    "visibleText": "VOYAGE\nVISTA\n\nPERSOONLIJK. VERTROUWD. VERBONDEN.\n\nElke mooie reis\nbegint met contact.\n\nJe reizen, voorstellen en contact met Voyage Vista. Alles bij elkaar, in je eigen omgeving.\n\n✦\n\nVan het eerste reisidee tot het moment van vertrek.\n\nVOYAGE VISTA · JOUW REIS, ONZE AANDACHT\n\n← Reizen bekijken zonder account\n\nMIJN VOYAGE VISTA\n\nWelkom terug\n\nLog in met je app-account om verder te gaan.\n\nAlle velden zijn verplicht.\n\nE-mailadres\nWachtwoord\nToon\nInloggen\n→\nHulp bij inloggen\n\nNog geen klantaccount?\n\nKlantaccount aanmaken\n\nVoor klanten en medewerkers. Medewerkersaccounts worden door de beheerder aangemaakt.",
+    "screenshot": "live-mijn-account.png",
+    "pageErrors": []
+  }
+]

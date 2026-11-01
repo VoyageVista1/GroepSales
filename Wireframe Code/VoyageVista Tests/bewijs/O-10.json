@@ -1,0 +1,66 @@
+{
+  "id": "O-10",
+  "date": "2026-11-01T14:44:57.883Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Noorwegen2 met half-euro p.p.",
+  "testdata": "1993/2=996.5;weergave997pp;totaal1993",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:44:59.418Z",
+      "message": "Prijsweergave",
+      "details": "Vergelijken\nvanaf · incl. BTW\n€ 997 p.p.\n€ 1.993 totaal voor 2\nBekijk reis"
+    },
+    {
+      "time": "2026-11-01T14:44:59.418Z",
+      "message": "Groepprijs niet afgeleid van afgeronde pp-prijs",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:59.418Z",
+      "message": "Exacte groepberekening1993",
+      "details": {
+        "ok": true
+      }
+    }
+  ],
+  "status": "PASS",
+  "evidence": [
+    "O-10.png",
+    "O-10.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nReizen\nZoek in Voyage Vista\n\nREISAANBOD\n\nReis zoeken\n\nVergelijk beschikbaarheid, prijzen en onderdelen.\n\nWaar wil de klant naartoe?\nKlant\nGeen klant geselecteerd\nZoë van Dijk · zoe+qa@example.nl · -klant · Particulier\nBestemming\nAlle bestemmingen\nDuitsland\nFrankrijk\nIndonesië\nItalië\nNoorwegen\nPortugal\nVertrek\nTerug\nReizigers\n1 persoon\n2 personen\n3 personen\n4 personen\n5 personen\n6 personen\n7 personen\n8 personen\n9 personen\n10 personen\n11 personen\n12 personen\n13 personen\n14 personen\n15 personen\n16 personen\n17 personen\n18 personen\n19 personen\n20 personen\nAlle prijzen\nTot € 500 p.p.\nTot € 750 p.p.\nTot € 1.000 p.p.\nOud aanbod (1)\nAlle beoordelingen\n4,5 of hoger\n4,8 of hoger\nFilters resetten\n7 reizen gevonden\n\nActueel beschikbaar aanbod voor de gekozen reiscriteria\n\nSorteer: aanbevolen\nPrijs laag–hoog\nPrijs hoog–laag\nBeoordeling\nReisduur\nIndonesië\nBeschikbaar\nQA Bali\n\nSynthetische QA-reis · 10 dagen · 4,9 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 600 p.p.\n€ 1.200 totaal voor 2\nBekijk reis\nNoorwegen\nBeschikbaar\nQA Noorwegen\n\nSynthetische QA-reis · 7 dagen · 4,8 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 997 p.p.\n€ 1.993 totaal voor 2\nBekijk reis\nNoorwegen\nBeschikbaar\nQA Noorwegen alternatief\n\nSynthetische QA-reis · 7 dagen · 4,8 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 900 p.p.\n€ 1.800 totaal voor 2\nBekijk reis\nFrankrijk\nBeschikbaar\nQA Onderdeelconflict\n\nSynthetische QA-reis · 7 dagen · 4,7 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 460 p.p.\n€ 920 totaal voor 2\nBekijk reis\nDuitsland\nBeschikbaar\nQA Geen hotel\n\nSynthetische QA-reis · 7 dagen · 4,6 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 400 p.p.\n€ 800 totaal voor 2\nBekijk reis\nPortugal\nBeschikbaar\nQA Portugal\n\nSynthetische QA-reis · 7 dagen · 4,5 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 445 p.p.\n€ 890 totaal voor 2\nBekijk reis\nItalië\nBeschikbaar\nQA Italië\n\nSynthetische QA-reis · 5 dagen · 4,4 / 5\n\nVerblijf inbegrepen\nVergelijken\nvanaf · incl. BTW\n€ 350 p.p.\n€ 700 totaal voor 2\nBekijk reis"
+}

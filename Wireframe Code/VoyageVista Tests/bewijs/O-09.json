@@ -1,0 +1,72 @@
+{
+  "id": "O-09",
+  "date": "2026-11-01T14:44:55.871Z",
+  "executor": "Codex",
+  "environment": {
+    "date": "2026-11-01T14:44:11.385Z",
+    "browser": "156.0.4314.58",
+    "engine": "Chromium / Microsoft Edge headless",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "node": "v24.12.0",
+    "commit": "Geen .git aanwezig",
+    "mode": "Geïsoleerde echte React-schermen; synthetische fixtures; Next.js en backendactie-adapters",
+    "origin": "http://127.0.0.1:52150",
+    "sourceHashes": {
+      "src/app/(frontend)/VoyageVista.tsx": "97d6236b99b279a0f979d83d72b12b699197c97179b5e562c1cec25e507a6343",
+      "src/app/(frontend)/travelRules.ts": "9ceb0cb392c379956b9d2e1f197fc048ddb346ed04bf6e7515de1bddd907a612",
+      "src/app/(frontend)/Dialog.tsx": "910830175430f47ebfa185deae93c85ff252656544a2869cfc8d1c9dd5aeb80f",
+      "src/app/(frontend)/ErrorBoundary.tsx": "ff29c880be590955f21f2f28a52fb1066bb72204ca632908a093d480e5cb3c34",
+      "src/app/(frontend)/styles.css": "e78e27e992e9532a61e71958bd0fd0292e9eefca316f87459e3b104a81e2dfb1",
+      "src/lib/travel-pricing.ts": "9df420eba0a7fde17fc95cf82c8c30c0c47af6fe684caa1b80f797c43931c563",
+      "VoyageVista_Testmethodiek.md": "83eb9e44646163d1b6e5428c157089187e2bde630ed7b82f54f86b37104b1887"
+    }
+  },
+  "preconditions": "Noorwegen;2personen;extra54vast+29pp",
+  "testdata": "1780+135+54+58+78=2105; aparte prijsaanpassing48",
+  "steps": [
+    "Open frisse staff-sessie met lege cookies/localStorage/sessionStorage",
+    "Navigeer naar Reizen",
+    "Selecteer klant Zoë van Dijk",
+    "Open details van QA Noorwegen",
+    "Kies reis en draag over aan Offerte maken",
+    "Ga naar stap 2 Reis"
+  ],
+  "observations": [
+    {
+      "time": "2026-11-01T14:44:57.682Z",
+      "message": "Groepprijs bevat basis, vaste kosten, extras en service",
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:57.683Z",
+      "message": "Uitgevoerde pure prijsfunctie inclusief aanpassing",
+      "details": {
+        "partsTotal": 1915,
+        "extrasTotal": 112,
+        "serviceCosts": 78,
+        "totalPrice": 2153
+      }
+    },
+    {
+      "time": "2026-11-01T14:44:57.683Z",
+      "message": "Prijsaanpassing direct via echte prijsfunctie getest; wizardtrigger apart O-13"
+    }
+  ],
+  "status": "PASS",
+  "evidence": [
+    "O-09.png",
+    "O-09.json"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "body": "VOYAGE\nVISTA\nMedewerkersportaal\nHoofdpagina\nUitloggen\n\nWERKRUIMTE\n\nOverzicht\nKlantvragen\n1\nReizen\nOffertes\n0\nBoekingen\nOpen kennisbank\nQM\nQA Medewerker\nMedewerker\nVoyage Vista\nOffertes\nZoek in Voyage Vista\n\nSALES & BOEKINGEN\n\nOffertes\n\nStel reisvoorstellen samen en volg de status.\n\nNieuwe offerte\nConcept\n0\nVerstuurd\n0\nGeaccepteerd\n0\n\nNIEUWE OFFERTE\n\nControleer de gekozen reis\nInvoer nog niet opgeslagen\nKlant\n2\nReis\n3\nControle\nKLANT\nZoë van Dijk\nREIS\nQA Noorwegen\nREIZIGERS\n2\nBUDGET\n€ 2.000+\nTOTAAL\n€ 2.105\nNog controleren\nQA Noorwegen\n\nNoorwegen · 1 – 8 juni 2027 · 2 reizigers\n\nAndere reis of bestemming kiezen\nReisonderdelen\nVlucht en verblijf\nVast onderdeel · € 890 p.p.\n€ 1.780\nVaste kosten\nVast onderdeel · € 135\n€ 135\nOpties en extra’s\n\nDe totaalprijs wordt direct opnieuw berekend.\n\nTransfer\nVaste prijs\n+ € 54\nVerzekering\nPrijs per reiziger\n+ € 29 p.p.\nGekozen reisonderdelen\n€ 1.915\nGekozen extra’s\n€ 112\nServicekosten (2 × € 39)\n€ 78\nTotale reissom\n€ 2.105\nBTW, belastingen en verplichte kosten\n\nTarieven zonder bevestigd bedrag blijven configureerbaar.\n\nParticulier\nWaarvan BTW (21%) · inbegrepen\n€ 365\nLuchthaven- en vertrekbelastingen\nVerwerkt in de getoonde vlucht- en reissom.\nInbegrepen in reissom\nLokale verplichte heffingen\nTarief moet bij de lokale leverancier worden bevestigd.\nConfigureerbaar tarief (p.p.)\nIndicatie ter plaatse te betalen\nTarief nog te bevestigen\nTotale reissom aan Voyage Vista\n€ 2.105\nControle vereist\nControleer de prijs en beschikbaarheid op basis van de geladen reisgegevens.\nNu controleren\nVorige\nVolgende stap"
+}
