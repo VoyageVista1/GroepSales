@@ -962,12 +962,9 @@ function Quotes({
           currency: 'EUR',
           maximumFractionDigits: 0,
         }).format(amount)
-  const budgetValues = budget.match(/\d[\d.]*/g) ?? []
-  const budgetLimit =
-    budget.includes('+') || budgetValues.length === 0
-      ? null
-      : Number(budgetValues[budgetValues.length - 1].replace(/\./g, ''))
-  const budgetExceededBy = budgetLimit && totalPrice > budgetLimit ? totalPrice - budgetLimit : 0
+  const budgetLimit = getBudgetLimit(budget)
+  const budgetExceededBy =
+    budgetLimit !== null && totalPrice > budgetLimit ? totalPrice - budgetLimit : 0
   const capacityAvailable = Boolean(selectedProposal && !capacityError)
   const effectiveMessage = useMemo(
     () =>
@@ -2610,10 +2607,10 @@ const formatTravelPrice = (amount: number) =>
     maximumFractionDigits: 0,
   }).format(amount)
 const getBudgetLimit = (budget: string) => {
-  const values = budget.match(/\d[\d.]*/g) ?? []
+  const values = budget.match(/\d[\d.]*(?:,\d{1,2})?/g) ?? []
   return budget.includes('+') || values.length === 0
     ? null
-    : Number(values[values.length - 1].replace(/\./g, ''))
+    : Number(values[values.length - 1].replace(/\./g, '').replace(',', '.'))
 }
 const getTravelTotal = (travel: Travel, count: number) =>
   calculateTravelPrice(travel, count).totalPrice
@@ -2708,7 +2705,7 @@ function Trips({ selectForQuote }: { selectForQuote: (selection: TravelSelection
         !maxPrice || getTravelPricePerPerson(travel, draft.travellers) <= Number(maxPrice)
       const totalTravelPrice = getTravelTotal(travel, draft.travellers)
       const matchesCustomerBudget =
-        !searchBudgetLimit || showOverBudget || totalTravelPrice <= searchBudgetLimit
+        searchBudgetLimit === null || showOverBudget || totalTravelPrice <= searchBudgetLimit
       const matchesAvailability = viewMode === 'current' ? travel.available : !travel.available
       const matchesRating = !minRating || travel.rating >= Number(minRating)
       return (
@@ -2756,7 +2753,7 @@ function Trips({ selectForQuote }: { selectForQuote: (selection: TravelSelection
           (!draft.returnDate || travel.endDate === draft.returnDate) &&
           (!maxPrice || getTravelPricePerPerson(travel, draft.travellers) <= Number(maxPrice)) &&
           (!minRating || travel.rating >= Number(minRating)) &&
-          (!searchBudgetLimit ||
+          (searchBudgetLimit === null ||
             showOverBudget ||
             getTravelTotal(travel, draft.travellers) <= searchBudgetLimit),
       )
@@ -2832,6 +2829,10 @@ function Trips({ selectForQuote }: { selectForQuote: (selection: TravelSelection
               onChange={(event) => setDraft({ ...draft, destination: event.target.value })}
             >
               <option value="">Alle bestemmingen</option>
+              {draft.destination &&
+                !travelProposals.some((travel) => travel.country === draft.destination) && (
+                  <option value={draft.destination}>{draft.destination}</option>
+                )}
               {[...new Set(travelProposals.map((travel) => travel.country))]
                 .sort((a, b) => a.localeCompare(b, 'nl'))
                 .map((country) => (
@@ -2893,7 +2894,7 @@ function Trips({ selectForQuote }: { selectForQuote: (selection: TravelSelection
             ? `Oud aanbod (${travelProposals.filter((travel) => !travel.available).length})`
             : 'Terug naar actueel aanbod'}
         </Button>
-        {selectedSearchCustomer && searchBudgetLimit && (
+        {selectedSearchCustomer && searchBudgetLimit !== null && (
           <Button variant="secondary" onClick={() => setShowOverBudget(!showOverBudget)}>
             {showOverBudget ? 'Verberg boven budget' : 'Toon boven budget'}
           </Button>
@@ -2987,7 +2988,7 @@ function Trips({ selectForQuote }: { selectForQuote: (selection: TravelSelection
                   <span key={facility}>{facility}</span>
                 ))}
               </div>
-              {searchBudgetLimit && (
+              {searchBudgetLimit !== null && (
                 <div
                   className={`travel-budget-note ${getTravelTotal(travel, draft.travellers) > searchBudgetLimit ? 'over' : getTravelTotal(travel, draft.travellers) + potentialExtrasTotal > searchBudgetLimit ? 'warning' : 'within'}`}
                 >
@@ -3344,6 +3345,7 @@ function Customers({
     if (initialQuestionId) {
       setSelectedId(initialQuestionId)
       setStatusFilter('all')
+      setQuery('')
     }
   }, [initialQuestionId])
   const [query, setQuery] = useState('')
@@ -3352,7 +3354,6 @@ function Customers({
   const [internalNote, setInternalNote] = useState(false)
   const [specialist, setSpecialist] = useState('')
   const sending = mutation.pending
-  const [sendError, setSendError] = useState('')
   const [showBooking, setShowBooking] = useState(false)
   const [profileExpanded, setProfileExpanded] = useState(false)
   const [addingQuestion, setAddingQuestion] = useState(false)
@@ -3370,22 +3371,16 @@ function Customers({
     message: '',
   })
 
-  const selected = questions.find((question) => question.id === selectedId) ?? questions[0]
-  const customer = findCustomer(
-    customerOptions,
-    selected?.customerId ?? selected?.customerEmail,
-  ) ?? { name: 'Onbekende klant', email: '', phone: '' }
   const [allBookings] = useBackendState(bookings)
-  const linkedBooking = allBookings.find((booking) => booking.id === selected?.bookingId)
   const filteredQuestions = questions.filter((question) => {
     const questionCustomer = findCustomer(
       customerOptions,
       question.customerId ?? question.customerEmail,
     )
     const matchesQuery =
-      `${question.subject} ${question.id} ${question.category} ${questionCustomer?.name ?? ''}`
+      `${question.subject} ${question.id} ${question.category} ${questionCustomer?.name ?? ''} ${questionCustomer?.email ?? question.customerEmail}`
         .toLowerCase()
-        .includes(query.toLowerCase())
+        .includes(query.trim().toLowerCase())
     const matchesStatus =
       statusFilter === 'all' ||
       (statusFilter === 'open'
@@ -3393,17 +3388,31 @@ function Customers({
         : question.status === statusFilter)
     return matchesQuery && matchesStatus
   })
+  const selected =
+    filteredQuestions.find((question) => question.id === selectedId) ?? filteredQuestions[0]
+  const customer = findCustomer(
+    customerOptions,
+    selected?.customerId ?? selected?.customerEmail,
+  ) ?? { name: 'Onbekende klant', email: '', phone: '' }
+  const linkedBooking = allBookings.find((booking) => booking.id === selected?.bookingId)
+  useEffect(() => {
+    setReply('')
+    setInternalNote(false)
+    setSpecialist('')
+    setShowBooking(false)
+    setProfileExpanded(false)
+  }, [selected?.id])
   const openCount = questions.filter((question) => question.status !== 'Afgesloten').length
   const urgentCount = questions.filter(
     (question) => question.priority === 'Urgent' && question.status !== 'Afgesloten',
   ).length
 
   const selectQuestion = (id: string) => {
+    if (mutation.pending) return
     setSelectedId(id)
     setReply('')
     setInternalNote(false)
     setSpecialist('')
-    setSendError('')
     setShowBooking(false)
     const question = questions.find((item) => item.id === id)
     if (question?.status === 'Nieuw')
@@ -3442,7 +3451,13 @@ function Customers({
   }
 
   const addQuestion = () => {
-    if (!newQuestion.subject.trim() || !newQuestion.message.trim()) return
+    if (
+      addingQuestionCustomer ||
+      !newQuestion.customerEmail ||
+      !newQuestion.subject.trim() ||
+      !newQuestion.message.trim()
+    )
+      return
     const question: CustomerQuestion = {
       id: `KV-${1055 + questions.length}`,
       customerId: newQuestion.customerId,
@@ -3513,7 +3528,7 @@ function Customers({
           <h1>Klantvragen</h1>
           <p>Behandel reisadvies, boekingswijzigingen, documenten, klachten en urgente vragen.</p>
         </div>
-        <Button icon="plus" onClick={() => setAddingQuestion(true)}>
+        <Button icon="plus" disabled={mutation.pending} onClick={() => setAddingQuestion(true)}>
           Klantvraag toevoegen
         </Button>
       </section>
@@ -3546,6 +3561,7 @@ function Customers({
               <Icon name="search" />
               <input
                 id="question-search"
+                disabled={mutation.pending}
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Zoek klantvraag"
@@ -3556,6 +3572,7 @@ function Customers({
             </label>
             <select
               id="question-status"
+              disabled={mutation.pending}
               value={statusFilter}
               onChange={(event) => setStatusFilter(event.target.value)}
             >
@@ -3577,6 +3594,7 @@ function Customers({
               <button
                 className={`message ${question.id === selected.id ? 'selected' : ''}`}
                 key={question.id}
+                disabled={mutation.pending}
                 onClick={() => selectQuestion(question.id)}
               >
                 <span className="avatar">
@@ -3603,7 +3621,7 @@ function Customers({
           )}
         </aside>
         {selected ? (
-          <article className="conversation customer-conversation">
+          <article className="conversation customer-conversation max-[900px]:h-auto!">
             <div className="conversation-head">
               <span className="avatar big">
                 {customer.name
@@ -3735,6 +3753,7 @@ function Customers({
               </label>
               <textarea
                 id="question-reply"
+                disabled={mutation.pending || selected.status === 'Afgesloten'}
                 maxLength={5000}
                 value={reply}
                 onChange={(event) => setReply(event.target.value)}
@@ -3747,30 +3766,28 @@ function Customers({
               <div>
                 <button
                   className={`text-button ${internalNote ? 'active' : ''}`}
+                  disabled={mutation.pending || selected.status === 'Afgesloten'}
                   onClick={() => setInternalNote(!internalNote)}
                 >
                   {internalNote ? 'Interne notitie actief' : 'Interne notitie'}
                 </button>
-                <ErrorNotice message={sendError || mutation.error} />
                 <Button
                   disabled={!reply.trim() || sending || selected.status === 'Afgesloten'}
                   onClick={sendReply}
                 >
-                  {sending
-                    ? 'Versturen…'
-                    : sendError
-                      ? 'Opnieuw proberen'
-                      : internalNote
-                        ? 'Notitie opslaan'
-                        : 'Antwoord versturen'}
+                  {sending ? 'Versturen…' : internalNote ? 'Notitie opslaan' : 'Antwoord versturen'}
                 </Button>
               </div>
             </div>
           </article>
         ) : (
           <div className="p-8">
-            <h2>Geen klantvragen</h2>
-            <p>Nieuwe vragen verschijnen hier. Je kunt ook zelf een klantvraag toevoegen.</p>
+            <h2>{questions.length ? 'Geen passende klantvragen' : 'Geen klantvragen'}</h2>
+            <p>
+              {questions.length
+                ? 'Pas je zoekopdracht of statusfilter aan.'
+                : 'Nieuwe vragen verschijnen hier. Je kunt ook zelf een klantvraag toevoegen.'}
+            </p>
           </div>
         )}
         {selected && (
@@ -3799,6 +3816,7 @@ function Customers({
             ) : (
               <Button
                 icon="search"
+                disabled={mutation.pending}
                 onClick={() => searchTripsForCustomer(profileKey(customer), selected)}
               >
                 Reis zoeken
@@ -3813,7 +3831,7 @@ function Customers({
               id="question-specialist"
               value={specialist}
               onChange={(event) => setSpecialist(event.target.value)}
-              disabled={selected.status === 'Afgesloten'}
+              disabled={mutation.pending || selected.status === 'Afgesloten'}
             >
               <option value="">Kies specialist</option>
               <option>Reisdocumenten</option>
@@ -3824,7 +3842,7 @@ function Customers({
             </select>
             <Button
               variant="secondary"
-              disabled={!specialist || selected.status === 'Afgesloten'}
+              disabled={mutation.pending || !specialist || selected.status === 'Afgesloten'}
               onClick={forwardQuestion}
             >
               Doorsturen
@@ -3858,7 +3876,9 @@ function Customers({
             {selected.status !== 'Afgesloten' && (
               <Button
                 variant="secondary"
-                disabled={selected.status !== 'Beantwoord' && !selected.specialist}
+                disabled={
+                  mutation.pending || (selected.status !== 'Beantwoord' && !selected.specialist)
+                }
                 onClick={closeQuestion}
               >
                 Klantvraag afsluiten
@@ -3871,7 +3891,9 @@ function Customers({
         <Dialog
           className="overlay"
           titleId="dialog-title-3794"
-          onClose={() => setAddingQuestion(false)}
+          onClose={() => {
+            if (!mutation.pending) setAddingQuestion(false)
+          }}
         >
           <div className="modal question-modal" onClick={(event) => event.stopPropagation()}>
             <div className="modal-head">
@@ -3882,6 +3904,7 @@ function Customers({
               <button
                 aria-label="Sluiten"
                 className="close"
+                disabled={mutation.pending}
                 onClick={() => setAddingQuestion(false)}
               >
                 ×
@@ -3896,6 +3919,7 @@ function Customers({
                 </div>
                 <button
                   className="inline-action"
+                  disabled={mutation.pending}
                   onClick={() => setAddingQuestionCustomer(!addingQuestionCustomer)}
                 >
                   <Icon name="plus" size={15} />
@@ -3908,6 +3932,8 @@ function Customers({
                     Naam
                     <input
                       value={newQuestionCustomer.name}
+                      maxLength={120}
+                      disabled={mutation.pending}
                       onChange={(event) =>
                         setNewQuestionCustomer({ ...newQuestionCustomer, name: event.target.value })
                       }
@@ -3918,6 +3944,8 @@ function Customers({
                     E-mail
                     <input
                       type="email"
+                      maxLength={254}
+                      disabled={mutation.pending}
                       value={newQuestionCustomer.email}
                       aria-invalid={Boolean(
                         newQuestionCustomer.email && !isValidEmail(newQuestionCustomer.email),
@@ -3944,6 +3972,8 @@ function Customers({
                     Telefoonnummer
                     <input
                       value={newQuestionCustomer.phone}
+                      maxLength={80}
+                      disabled={mutation.pending}
                       onChange={(event) =>
                         setNewQuestionCustomer({
                           ...newQuestionCustomer,
@@ -3954,11 +3984,16 @@ function Customers({
                     />
                   </label>
                   <div>
-                    <Button variant="secondary" onClick={() => setAddingQuestionCustomer(false)}>
+                    <Button
+                      variant="secondary"
+                      disabled={mutation.pending}
+                      onClick={() => setAddingQuestionCustomer(false)}
+                    >
                       Annuleren
                     </Button>
                     <Button
                       disabled={
+                        mutation.pending ||
                         !newQuestionCustomer.name.trim() ||
                         !isValidEmail(newQuestionCustomer.email) ||
                         !newQuestionCustomer.phone.trim()
@@ -3974,6 +4009,7 @@ function Customers({
                   Klant
                   <select
                     value={newQuestion.customerId ?? newQuestion.customerEmail}
+                    disabled={mutation.pending}
                     onChange={(event) =>
                       setNewQuestion({
                         ...newQuestion,
@@ -3997,6 +4033,7 @@ function Customers({
                   Categorie
                   <select
                     value={newQuestion.category}
+                    disabled={mutation.pending}
                     onChange={(event) =>
                       setNewQuestion({ ...newQuestion, category: event.target.value })
                     }
@@ -4013,6 +4050,8 @@ function Customers({
                   Onderwerp
                   <input
                     value={newQuestion.subject}
+                    maxLength={200}
+                    disabled={mutation.pending}
                     onChange={(event) =>
                       setNewQuestion({ ...newQuestion, subject: event.target.value })
                     }
@@ -4024,6 +4063,8 @@ function Customers({
                 Vraag
                 <textarea
                   value={newQuestion.message}
+                  maxLength={5000}
+                  disabled={mutation.pending}
                   onChange={(event) =>
                     setNewQuestion({ ...newQuestion, message: event.target.value })
                   }
@@ -4032,11 +4073,21 @@ function Customers({
               </label>
             </div>
             <div className="modal-actions">
-              <Button variant="secondary" onClick={() => setAddingQuestion(false)}>
+              <Button
+                variant="secondary"
+                disabled={mutation.pending}
+                onClick={() => setAddingQuestion(false)}
+              >
                 Annuleren
               </Button>
               <Button
-                disabled={!newQuestion.subject.trim() || !newQuestion.message.trim()}
+                disabled={
+                  mutation.pending ||
+                  addingQuestionCustomer ||
+                  !newQuestion.customerEmail ||
+                  !newQuestion.subject.trim() ||
+                  !newQuestion.message.trim()
+                }
                 onClick={addQuestion}
               >
                 Klantvraag toevoegen
@@ -4236,21 +4287,22 @@ function CustomerPortal({ trips }: { trips: PublicTravel[] }) {
       <div className="mx-auto max-w-6xl px-6 pt-4">
         <ErrorNotice message={mutation.error} />
       </div>
-      {tab === 'wish' && (
-        <main className="customer-main customer-subpage">
-          <section className="page-heading">
-            <div>
-              <p className="eyebrow">REIS OP MAAT</p>
-              <h1>Jouw reiswens</h1>
-              <p>
-                Geen passende reis gevonden? Vertel ons wat je zoekt. Je specialist maakt een
-                persoonlijk voorstel.
-              </p>
-            </div>
-          </section>
-          <TravelWishForm onCancel={() => setTab('discover')} onHistory={() => setTab('trip')} />
-        </main>
-      )}
+      <main
+        hidden={tab !== 'wish'}
+        className={`customer-main customer-subpage ${tab !== 'wish' ? 'hidden!' : ''}`}
+      >
+        <section className="page-heading">
+          <div>
+            <p className="eyebrow">REIS OP MAAT</p>
+            <h1>Jouw reiswens</h1>
+            <p>
+              Geen passende reis gevonden? Vertel ons wat je zoekt. Je specialist maakt een
+              persoonlijk voorstel.
+            </p>
+          </div>
+        </section>
+        <TravelWishForm onCancel={() => setTab('discover')} onHistory={() => setTab('trip')} />
+      </main>
       {tab === 'booking' && checkoutTravel && (
         <main className="customer-main customer-subpage">
           <section className="page-heading">
@@ -4860,7 +4912,12 @@ function VoyageVistaApp({ trips }: { trips: PublicTravel[] }) {
       draft: {
         ...defaultSearch,
         travellers: !travellerError(requestedCount) ? requestedCount : (wish?.travellers ?? 2),
-        destination: travel?.country ?? '',
+        destination:
+          travel?.country ??
+          (question?.destination &&
+          !['nog te bepalen', 'onbekend', '—'].includes(question.destination.trim().toLowerCase())
+            ? question.destination.trim()
+            : ''),
         departure: question?.startDate ?? travel?.startDate ?? '',
         returnDate: question?.endDate ?? travel?.endDate ?? '',
       },

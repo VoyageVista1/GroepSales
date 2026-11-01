@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { bookTripAction, createQuestionAction, type DataResult } from '@/actions/voyage'
 import { travelWishErrors } from '@/lib/travel-wish'
@@ -12,6 +12,20 @@ const field =
 const label = 'block! text-base! font-bold! normal-case! tracking-normal! text-[var(--vv-primary)]!'
 const euro = (value: number) =>
   new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(value)
+const emptyWish = {
+  destination: '',
+  period: '',
+  startDate: '',
+  endDate: '',
+  travellers: '2',
+  budget: '',
+  departure: '',
+  message: '',
+}
+const wishFieldErrors = (issues: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(issues).map(([key, value]) => [key === 'budgetMax' ? 'budget' : key, value]),
+  )
 
 function Result({ result }: { result: DataResult | null }) {
   return result ? (
@@ -35,22 +49,29 @@ export function TravelWishForm({
   onHistory: () => void
 }) {
   const router = useRouter()
-  const [values, setValues] = useState({
-    destination: '',
-    period: '',
-    startDate: '',
-    endDate: '',
-    travellers: '2',
-    budget: '',
-    departure: '',
-    message: '',
-  })
+  const [values, setValues] = useState(emptyWish)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [review, setReview] = useState(false)
   const [pending, setPending] = useState(false)
   const [result, setResult] = useState<DataResult | null>(null)
   const inFlight = useRef(false)
   const form = useRef<HTMLFormElement>(null)
+  const dirty = Object.entries(emptyWish).some(
+    ([key, value]) => values[key as keyof typeof values] !== value,
+  )
+  useEffect(() => {
+    if (!dirty || result?.ok) return
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault()
+      event.returnValue = ''
+    }
+    window.addEventListener('beforeunload', warn)
+    return () => window.removeEventListener('beforeunload', warn)
+  }, [dirty, result?.ok])
+  const focusError = () =>
+    requestAnimationFrame(() =>
+      form.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(),
+    )
   const input = () => ({
     ...values,
     travellers: Number(values.travellers),
@@ -78,18 +99,11 @@ export function TravelWishForm({
       </span>
     )
   const check = () => {
-    const issues = travelWishErrors(input())
-    // The budget input uses the same name as its error association.
-    if (issues.budgetMax) {
-      issues.budget = issues.budgetMax
-      delete issues.budgetMax
-    }
+    const issues = wishFieldErrors(travelWishErrors(input()))
     setErrors(issues)
     if (Object.keys(issues).length) {
       setResult({ ok: false, message: 'Controleer de aangegeven velden.' })
-      requestAnimationFrame(() =>
-        form.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(),
-      )
+      focusError()
       return false
     }
     return true
@@ -108,8 +122,9 @@ export function TravelWishForm({
       setResult(response)
       if (response.ok) router.refresh()
       else if (response.errors) {
-        setErrors(response.errors)
+        setErrors(wishFieldErrors(response.errors))
         setReview(false)
+        focusError()
       }
     } catch {
       setResult({
@@ -121,22 +136,21 @@ export function TravelWishForm({
       setPending(false)
     }
   }
+  const reset = () => {
+    setValues(emptyWish)
+    setReview(false)
+    setErrors({})
+    setResult(null)
+  }
   const cancel = () => {
-    const dirty =
-      values.destination ||
-      values.period ||
-      values.message ||
-      values.budget ||
-      values.departure ||
-      values.startDate ||
-      values.endDate ||
-      values.travellers !== '2'
     if (
       !dirty ||
       result?.ok ||
       window.confirm('Je reiswens is nog niet verstuurd. Wil je deze gegevens verlaten?')
-    )
+    ) {
+      reset()
       onCancel()
+    }
   }
   return (
     <section className="rounded-xl! border! border-[var(--vv-border)]! bg-white! p-4! sm:p-8!">
@@ -147,7 +161,13 @@ export function TravelWishForm({
             Je reisspecialist behandelt je reiswens. Je vindt de status en het antwoord bij Mijn
             reis → Mijn aanvragen. Dit is een vrijblijvende aanvraag.
           </p>
-          <button className="button button-primary" onClick={onHistory}>
+          <button
+            className="button button-primary"
+            onClick={() => {
+              reset()
+              onHistory()
+            }}
+          >
             Bekijk mijn aanvragen
           </button>
         </div>
